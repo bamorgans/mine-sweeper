@@ -3,10 +3,13 @@
     "version": "1.0.0",
     "description": "classic MineSweeper game",
     "main": "index.js",
+    "config": {
+        "distDirectory": "dist"
+    },
     "scripts": {
         "clean": "rm -rf dist",
         "test": "mocha --compilers js:babel-core/register  --recursive",
-        "build": "webpack",
+        "build": "grunt copy && webpack",
         "start": "webpack-dev-server -d --history-api-fallback --hot --inline --progress --colors",
         "lint": "eslint src/**",
         "lint:fix": "eslint src/**  --fix",

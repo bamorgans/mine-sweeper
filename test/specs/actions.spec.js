@@ -2,12 +2,12 @@ import assert from 'assert';
 import actions from '../../src/actions.js';
 
 describe('Actions Test',() => {
-    describe('CHANGE_LEVEL', () => {
-        it('should create CHANGE_LEVEL action', (done) => {
-            let action = actions.changeLevel(3);
+    describe('Set Level', () => {
+        it('should create SET_LEVEL action', (done) => {
+            let action = actions.setLevel(3);
             assert.deepEqual(action,
                 {
-                    type: 'CHANGE_LEVEL',
+                    type: 'SET_LEVEL',
                     payload: 3
                 });
 

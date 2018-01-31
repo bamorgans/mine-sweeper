@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import actions  from '../actions.js';
 import store from '../store.js';
-
+import Cell from '../components/cell.jsx';
 export default class Board extends React.Component {
     componentWillMount() {
-        store.dispatch(actions.changeLevel(3));
+        store.dispatch(actions.setLevel(3));
     }
 
     render() {
@@ -15,6 +15,7 @@ export default class Board extends React.Component {
 
         return (
             <div>
+                <Cell/>
                 <h1> level = {data.level}</h1>
                 <h2> {childNames.join(' ')}</h2>
             </div>

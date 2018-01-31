@@ -1,9 +1,17 @@
-import { ACTION_TYPE} from './constants';
+import {ACTION_TYPE} from './constants';
 
-const showMines = (row, col) => ({ type:  ACTION_TYPE.SHOW_MINES, payload: {row, col} });
-const changeLevel = level => ({ type:  ACTION_TYPE.CHANGE_LEVEL, payload: level });
+const newGame = level => ({type: ACTION_TYPE.NEW_GAME, payload: level});
+const setLevel = level => ({type: ACTION_TYPE.SET_LEVEL, payload: level});
+const selectCell = (row, col) => ({type: ACTION_TYPE.SELECT_CELL, payload: {row, col}});
+const showCell = (row, col) => ({type: ACTION_TYPE.SHOW_CELL, payload: {row, col}});
+const setMines = numberOfMines => ({type: ACTION_TYPE.SET_MINES, payload : numberOfMines});
+const showMines = (timeExpired) => ({type: ACTION_TYPE.SHOW_MINES, payload: timeExpired});
 
 export default {
-    showMines: showMines,
-    changeLevel: changeLevel
+    newGame: newGame,
+    setLevel: setLevel,
+    selectCell: selectCell,
+    showCell: showCell,
+    setMines: setMines,
+    showMines: showMines
 };

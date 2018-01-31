@@ -1,6 +1,10 @@
 
 //redux actions
 export const ACTION_TYPE = {
-    SHOW_MINES: 'SHOW_MINES',
-    CHANGE_LEVEL: 'CHANGE_LEVEL'
+    NEW_GAME:'NEW_GAME',
+    SET_LEVEL: 'SET_LEVEL',
+    SELECT_CELL: 'SELECT_CELL',
+    SHOW_CELL: 'SHOW_CELL',
+    SET_MINES: 'SET_MINES',
+    SHOW_MINES: 'SHOW_MINES'
 };
