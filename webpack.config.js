@@ -1,15 +1,26 @@
+var express = require('express');
+var path = require('path');
 module.exports = {
+    cache: false,
+    context: path.resolve(__dirname, 'src'),
     devtool: 'eval-source-map',
     entry: [
-        './index.js',
+        '../index.js',
     ],
     output: {
-        path: __dirname + '/dist',
+        path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/static/'
-    },
+        publicPath: '/'
+      },
     plugins: [
     ],
+    devServer: {
+        contentBase: './', //disk location
+        watchContentBase: true,
+        setup(app){
+           app.use('static/', express.static('/static/'));
+        }
+    },
     module: {
         rules: [
             {

@@ -8,7 +8,7 @@ export default class Cell extends React.Component {
         return (
             <div>
                 in here
-                <a> <img src='./img/bomb_32.png'/> </a>
+                <a> <img src='./static/img/bomb_32.png'/> </a>
             </div>
         );
     }
