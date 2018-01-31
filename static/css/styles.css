@@ -1,0 +1,12 @@
+body {
+    height: 100%;
+    background: #f3f3f3;
+    font-family: 'Roboto';
+}
+
+
+content {
+    margin-left: 130px;
+    padding-top: 60px;
+    display: flex;
+}
