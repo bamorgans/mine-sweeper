@@ -1,0 +1,5 @@
+  /*
+  minesLocations
+  flagLocations
+  revealLocations
+   */

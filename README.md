@@ -36,11 +36,7 @@ Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-### `npm run buid`
+### `npm run build`
 
 Builds the app for development and debugging.<br>
-
-### `npm run prod`
-
-Builds the app for production to the `dist` folder.<br>
 

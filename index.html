@@ -1,54 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- had to bring in no-touch to make controls on panels work -->
 <head>
-  <title>MineSweeper</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,900,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <style type="text/css">
-    html {
-      height:100%;
-      overflow-x: hidden;
-      background:#f3f3f3;
-    }
-    body {
-      height: 100%;
-      margin: 0;
-    }
+    <title>MineSweeper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,900,700' rel='stylesheet' type='text/css'>
 
-    * {
-      box-sizing:border-box
-    }
-  </style>
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css">
 </head>
 <body>
-<svg version="1.1" visibility="hidden" style="position:fixed" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <radialGradient cx="50%" cy="49.7500002%" fx="50%" fy="49.7500002%" r="44.2094376%" id="radialGradient-1">
-      <stop stop-color="#FFFFFF" stop-opacity="0.329568614" offset="0%"></stop>
-      <stop stop-color="#2A2A2A" stop-opacity="0.419214221" offset="100%"></stop>
-    </radialGradient>
-    <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
-      <feMorphology radius="1" in="SourceAlpha" operator="dilate" result="shadowSpreadOuter1"></feMorphology>
-      <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
-      <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-      <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.35 0" in="shadowBlurOuter1" type="matrix" result="shadowMatrixOuter1"></feColorMatrix>
-      <feMerge>
-        <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-        <feMergeNode in="SourceGraphic"></feMergeNode>
-      </feMerge>
-    </filter>
-    <linearGradient x1="50%" y1="34.4785841%" x2="50%" y2="100%" id="linearGradient-4">
-      <stop stop-color="#F3F3F3" offset="0%"></stop>
-      <stop stop-color="#A4A4A4" offset="100%"></stop>
-    </linearGradient>
-    <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-6">
-      <stop stop-color="#F60202" offset="0%"></stop>
-      <stop stop-color="#910000" offset="100%"></stop>
-    </linearGradient>
-  </defs>
-</svg>
+
 <div id="app"></div>
 <script src="/bundle.js"></script>
 </body>

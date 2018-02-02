@@ -7,7 +7,7 @@ describe('Actions Test',() => {
             let action = actions.setLevel(3);
             assert.deepEqual(action,
                 {
-                    type: 'SET_LEVEL',
+                    type: 'set level',
                     payload: 3
                 });
 

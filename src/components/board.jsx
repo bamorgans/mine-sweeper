@@ -1,23 +1,52 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import actions  from '../actions.js';
-import store from '../store.js';
+import {CELL_TYPE} from '../constants.js';
 import Cell from '../components/cell.jsx';
+
+
 export default class Board extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     componentWillMount() {
-        store.dispatch(actions.setLevel(3));
+    }
+
+    handler(e) {
+        if (e.ctrlKey) {
+            console.log('min Control clicked: ', e);
+        }
+        else {
+            console.log('bomb control clicked: ', e);
+        }
     }
 
     render() {
-        let data = store.getState();
-        const {children} = this.props;
-        let childNames = React.Children.map(children, child => child.props.children);
-
         return (
             <div>
-                <Cell/>
-                <h1> level = {data.level}</h1>
-                <h2> {childNames.join(' ')}</h2>
+                <div className='board'>
+                    {Array(9).fill(1).map((rowData, row) => {
+                        return (
+                            <div key={row} className='board'>
+                                {Array(9).fill(1).map((value,col) => {
+                                    let key = row.toString() + '-' + col.toString();
+                                    return <Cell
+                                        id={key}
+                                        key={key}
+                                        type={CELL_TYPE.MINE}
+                                        onClick={this.handler}/>;
+                                })}
+                            </div>);
+                    })}
+                </div>
+
+                {/*<Cell id='flag' type={CELL_TYPE.FLAG} onClick={this.handler}/>
+                <Cell id='mine' type={CELL_TYPE.MINE}/>
+                <Cell id='one' type={CELL_TYPE.TEXT} label={'1'}/>
+                <Cell id='two' type={CELL_TYPE.TEXT} label={'2'}/>
+                <Cell id='mine' label={'?'} onClick={this.handler}/>
+                <Cell id='empty' onClick={this.handler}/>*/
+                }
             </div>
         );
     }

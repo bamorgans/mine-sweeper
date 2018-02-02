@@ -3,7 +3,7 @@ var path = require('path');
 module.exports = {
     cache: false,
     context: path.resolve(__dirname, 'src'),
-    devtool: 'eval-source-map',
+    devtool: 'inline-source-map',
     entry: [
         '../index.js',
     ],
@@ -11,14 +11,14 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
         publicPath: '/'
-      },
+    },
     plugins: [
     ],
     devServer: {
         contentBase: './', //disk location
         watchContentBase: true,
         setup(app){
-           app.use('static/', express.static('/static/'));
+            app.use('static/', express.static('/static/'));
         }
     },
     module: {
