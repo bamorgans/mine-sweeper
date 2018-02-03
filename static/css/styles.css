@@ -22,6 +22,14 @@ content {
     padding-top: 60px;
     display: flex;
 }
+.flex-row-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
 
 /* board class styles*/
 .board {
@@ -39,10 +47,10 @@ content {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 35px;
-    height: 35px;
-    margin: 3px;
-    padding: 5px;
+    width: 36px;
+    height: 36px;
+    margin: 1px;
+    padding: 3px;
     border: 1px solid #bbb;
     border-radius: 7px;
     background: #fff;

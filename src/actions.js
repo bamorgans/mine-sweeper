@@ -1,17 +1,20 @@
-import {ACTION_TYPE} from './constants';
+/**
+ * Created by bamorgans on 1/29/2018.
+ */
 
-const newGame = level => ({type: ACTION_TYPE.NEW_GAME, payload: level});
+import {ACTION_TYPE} from './constants.js';
+
+//Redux Store Action Creators
+const newGame = gameState => ({type: ACTION_TYPE.NEW_GAME, payload: gameState});
 const setLevel = level => ({type: ACTION_TYPE.SET_LEVEL, payload: level});
-const selectCell = (row, col) => ({type: ACTION_TYPE.SELECT_CELL, payload: {row, col}});
-const showCell = (row, col) => ({type: ACTION_TYPE.SHOW_CELL, payload: {row, col}});
-const setMines = numberOfMines => ({type: ACTION_TYPE.SET_MINES, payload : numberOfMines});
-const showMines = (timeExpired) => ({type: ACTION_TYPE.SHOW_MINES, payload: timeExpired});
+const addFlag = (row, col) => ({type: ACTION_TYPE.ADD_FLAG, payload: {row: row, col: col}});
+const openCell = (row, col) => ({type: ACTION_TYPE.OPEN_CELL, payload: {row: row, col: col}});
+
 
 export default {
     newGame: newGame,
-    setLevel: setLevel,
-    selectCell: selectCell,
-    showCell: showCell,
-    setMines: setMines,
-    showMines: showMines
+    setLevel:setLevel,
+    addFlag: addFlag,
+    openCell: openCell,
+
 };

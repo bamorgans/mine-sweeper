@@ -1,19 +1,16 @@
+/**
+ * Created by bamorgans on 1/29/2018.
+ */
 import React from 'react';
-import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {GAME_STATES} from '../constants.js';
 
-import actions from '../actions.js';
-import store from '../store.js';
+export default class Header extends React.Component {
+    constructor(props) {
+        super(props);
 
-
-const mapStateToProps = state => {
-    return {level: state.level};
-};
-
-class connectedHeader extends React.Component {
-
-    constructor({level}) {
-        super({level});
+        this.changeLevelHandler = this.props.changeLevelHandler;
+        this.newGameHandler = this.props.newGameHandler;
         this.state = {
             value: 'beginner',
         };
@@ -48,27 +45,21 @@ class connectedHeader extends React.Component {
         };
     }
 
-    handleChangeLevel(e) {
-        if (e.target && e.target.value) {
-            store.dispatch(actions.setLevel(e.target.value));
-        }
-
-    }
-
     render() {
         let styles = this.getStyles();
         return (
             <div style={styles.header}>
                 <div style={styles.title}>MineSweeper</div>
                 <div style={styles.levelContainer}>
-                    <select className='combobox' value={this.props.level} onChange={this.handleChangeLevel.bind(this)}>
+                    <select className='combobox' value={this.props.level} onChange={this.changeLevelHandler}>
                         <option value='beginner'>Beginner</option>
                         <option value='intermediate'>Intermediate</option>
                         <option value='expert'>Expert</option>
                     </select>
                 </div>
                 <div style={styles.buttonContainer}>
-                    <button className='button'>New Game</button>
+                    <button id='newGameBtn' className='button' onClick={this.newGameHandler}>
+                        {this.props.gameState === GAME_STATES.END ? 'New Game' : '  Quit  '}</button>
                 </div>
             </div>
         );
@@ -76,9 +67,9 @@ class connectedHeader extends React.Component {
 }
 
 
-const Header = connect(mapStateToProps)(connectedHeader);
-
-connectedHeader.propTypes = {
-    level: PropTypes.string
+Header.propTypes = {
+    level: PropTypes.string,
+    gameState: PropTypes.string,
+    changeLevelHandler: PropTypes.func.isRequired,
+    newGameHandler:PropTypes.func.isRequired
 };
-export default Header;

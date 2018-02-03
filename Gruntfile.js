@@ -15,6 +15,12 @@ module.exports = function (grunt) {
                 src: '**/*.*',
                 dest: 'dist',
             },
+            libfiles: {
+                expand: true,
+                cwd: 'static/',
+                src: '**/*.js',
+                dest: 'dist',
+            },
             htmlfile: {
                 expand: true,
                 src: 'index.html',

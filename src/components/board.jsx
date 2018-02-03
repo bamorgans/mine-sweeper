@@ -1,18 +1,45 @@
+/**
+ * Created by bamorgans on 1/29/2018.
+ */
+
+//import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CELL_TYPE} from '../constants.js';
+import {CELL_TYPE,LEVEL_CONFIG} from '../constants.js';
+
+
 import Cell from '../components/cell.jsx';
 
 
 export default class Board extends React.Component {
     constructor(props) {
         super(props);
+        this.onClickHandler = this.onClickHandler.bind(this);
     }
 
     componentWillMount() {
     }
 
-    handler(e) {
+    onClickHandler(e) {
+        /* $(e).explode({
+             omitLastLine: false,
+             radius: 80,
+             minRadius: 20,
+             release: true,
+             fadeTime: 300,
+             recycle: true,
+             recycleDelay: 500,
+             fill: true,
+             explodeTime: 300,
+             maxAngle: 360,
+             gravity: 0,
+             round: false,
+             groundDistance: 400,
+             ignoreCompelete: false,
+             land: true,
+             checkOutBound: true,
+             finish: true,
+         });*/
         if (e.ctrlKey) {
             console.log('min Control clicked: ', e);
         }
@@ -22,19 +49,20 @@ export default class Board extends React.Component {
     }
 
     render() {
+        var levelCfg = LEVEL_CONFIG[this.props.level];
         return (
             <div>
                 <div className='board'>
-                    {Array(9).fill(1).map((rowData, row) => {
+                    {Array(levelCfg.rows).fill(1).map((rowData, row) => {
                         return (
                             <div key={row} className='board'>
-                                {Array(9).fill(1).map((value,col) => {
+                                {Array(levelCfg.cols).fill(1).map((value, col) => {
                                     let key = row.toString() + '-' + col.toString();
                                     return <Cell
                                         id={key}
                                         key={key}
                                         type={CELL_TYPE.MINE}
-                                        onClick={this.handler}/>;
+                                        onClick={this.onClickHandler}/>;
                                 })}
                             </div>);
                     })}
@@ -53,6 +81,7 @@ export default class Board extends React.Component {
 }
 
 Board.propTypes = {
-    children: PropTypes.array
+    level:PropTypes.string,
+    gameData:PropTypes.object
 };
 
