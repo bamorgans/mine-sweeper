@@ -14,6 +14,8 @@ import actions from './actions.js';
 import Header from './components/header.jsx';
 import Dashboard from './components/dashboard.jsx';
 import Board from './components/board.jsx';
+import minesweeper from './api/minesweeper';
+import {LEVEL_CONFIG} from './constants';
 
 
 class App extends React.Component {
@@ -31,9 +33,14 @@ class App extends React.Component {
 
     newGameHandler(e) {
         if (e.target && this.props) {
-            store.dispatch(actions.newGame(GAME_STATES.END == this.props.gameState ?
-                GAME_STATES.RUNNING : GAME_STATES.END));
+            let gameState = GAME_STATES.END;
 
+            if(GAME_STATES.END == this.props.gameState) {
+                gameState = GAME_STATES.RUNNING;
+                let levelCfg = LEVEL_CONFIG[this.props.level];
+                minesweeper.create(levelCfg.row, levelCfg.col, levelCfg.mineCount);
+            }
+            store.dispatch(actions.newGame(gameState));
         }
     }
 

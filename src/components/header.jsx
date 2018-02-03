@@ -25,7 +25,7 @@ export default class Header extends React.Component {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 width: '100%',
-                height: 42,
+                height: 45,
                 padding: 10,
                 background: '#212121'
             },

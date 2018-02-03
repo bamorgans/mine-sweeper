@@ -95,7 +95,7 @@ function testCell (game, rowCol) {
         });
 
         if (isWinner(nextGame)) {
-            return { ...nextGame, status: GameStatus.Won };
+            return { ...nextGame, status: GAME_STATUS.WON };
         } else if (openedCount === 0) {
             return testCells(nextGame, adjCells);
         }
