@@ -3,6 +3,17 @@ import PropTypes from 'prop-types';
 import {CELL_STATUS} from '../api/minesweeper.js';
 import {ICONS} from '../constants.js';
 
+const colorMap = {
+    '-1':'text-brown',
+    '1': 'bkgd-blue',
+    '2': 'bkgd-green',
+    '3': 'bkgd-red',
+    '4': 'bkgd-violet',
+    '5': 'bkgd-magenta',
+    '6': 'bkgd-cyan',
+    '7': 'bkgd-yellow',
+    '8': 'bkgd-black'
+};
 
 export default class Cell extends React.Component {
     constructor(props) {
@@ -16,8 +27,10 @@ export default class Cell extends React.Component {
 
         // adjusting the cell class when has not been selected
         let cellClass = cellStatus === CELL_STATUS.UNKNOWN ?
-            'cell-default cell': 'cell text-blue';
+            'cell-default cell': 'cell ' + colorMap[openCount.toString()];
 
+        // removing label for clear cells
+        openCount = openCount !== -1 ? openCount : '';
         return (
             <div id={this.props.id} ref={this.props.id} className={cellClass} onClick={this.props.onClick}>
                 {CELL_STATUS.OPENED === cellStatus ?

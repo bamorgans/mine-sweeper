@@ -83,32 +83,51 @@ content {
     color: #b58900
 }
 
-.text-orange {
-    color: #cb4b16
+.text-blue {
+    color: #268bd2
 }
 
 .text-red {
     color: #dc322f
 }
 
-.text-magenta {
-    color: #d33682
+
+/*cell background colors */
+
+.text-brown {
+    background:#725b53
 }
 
-.text-violet {
-    color: #6c71c4
+.bkgd-blue {
+    background: #268bd2
 }
 
-.text-blue {
-    color: #268bd2
+.bkgd-green {
+    background: #859900
 }
 
-.text-cyan {
-    color: #2aa198
+.bkgd-red {
+    background: #dc322f
 }
 
-.text-green {
-    color: #859900
+.bkgd-violet {
+    background: #6c71c4
+}
+.bkgd-magenta {
+    background: #d33682
+}
+
+.bkgd-cyan {
+    background: #2aa198
+}
+
+.bkgd-yellow {
+    background: #b58900
+}
+
+
+.text-orange {
+    background: #cb4b16
 }
 
 .button {
