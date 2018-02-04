@@ -5,9 +5,9 @@
 //import $ from 'jquery';
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CELL_TYPE,LEVEL_CONFIG} from '../constants.js';
+import {LEVEL_CONFIG} from '../constants.js';
 
-
+import _ from 'lodash';
 import Cell from '../components/cell.jsx';
 
 
@@ -40,16 +40,15 @@ export default class Board extends React.Component {
              checkOutBound: true,
              finish: true,
          });*/
-        if (e.ctrlKey) {
-            console.log('min Control clicked: ', e);
-        }
-        else {
-            console.log('bomb control clicked: ', e);
+        if(!_.isEmpty(this.props.gameData) && !_.isEmpty(e.target)){
+            var cellRowColKey = e.target.id;
+            e.ctrlKey? this.props.setFlagHandler(cellRowColKey) : this.props.openCellHandler(cellRowColKey);
         }
     }
 
     render() {
-        var levelCfg = LEVEL_CONFIG[this.props.level];
+        let levelCfg = LEVEL_CONFIG[this.props.level];
+        let cellsRowCol = this.props.gameData.cellsRowCol || {};
         return (
             <div>
                 <div className='board'>
@@ -57,11 +56,11 @@ export default class Board extends React.Component {
                         return (
                             <div key={row} className='board'>
                                 {Array(levelCfg.cols).fill(1).map((value, col) => {
-                                    let key = row.toString() + '-' + col.toString();
+                                    let key = row.toString() + ',' + col.toString();
                                     return <Cell
                                         id={key}
                                         key={key}
-                                        type={CELL_TYPE.MINE}
+                                        cellData={cellsRowCol[key]}
                                         onClick={this.onClickHandler}/>;
                                 })}
                             </div>);
@@ -82,6 +81,9 @@ export default class Board extends React.Component {
 
 Board.propTypes = {
     level:PropTypes.string,
-    gameData:PropTypes.object
+    gameData:PropTypes.object,
+    gameState: PropTypes.string,
+    setFlagHandler: PropTypes.func,
+    openCellHandler:PropTypes.func
 };
 

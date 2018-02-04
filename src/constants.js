@@ -3,10 +3,8 @@
  */
 
 export const ACTION_TYPE = {
-    NEW_GAME:   'new game',
     SET_LEVEL:  'set level',
-    ADD_FLAG:   'add flag',
-    OPEN_CELL:  'open cell'
+    UPDATE_GAME: 'update game'
 };
 
 export const CELL_TYPE = {
@@ -25,6 +23,7 @@ export const GAME_LEVEL = {
 
 export const GAME_STATES = {
     END:        'end',
+    RESET:      'reset',
     RUNNING:    'running',
     PAUSED:     'paused'
 };

@@ -6,18 +6,17 @@ const DEFAULT_MINE_COUNT = 10;
 const DEFAULT_COLS = 9;
 const DEFAULT_ROWS = 9;
 
-const CELL_STATUS = {
+export const GAME_STATUS = {
+    IN_PROGRESS: 0,
+    WIN: 1,
+    LOST: 2
+};
+
+export const CELL_STATUS = {
     UNKNOWN: 0,
     OPENED:1,
     FLAGGED:2,
     EXPLODED: 3
-
-};
-
-const GAME_STATUS = {
-    IN_PROGRESS: 0,
-    WIN: 1,
-    LOST: 2
 };
 
 // this is an offset array to find the adjacent cell for a cell on the board
@@ -62,21 +61,6 @@ function createBoard(rows, cols, mineCount){
 
 /*---------------------- Cell related methods  ----------------------*/
 
-const updateCell = (game, rowCol, cell) => ({
-    ...game,
-    cellsRowCol: { ...game.cellsRowCol, [rowCol]: cell },
-});
-
-const testCells = (prev, rowCols) =>
-    rowCols.reduce((game, rowCol) => {
-        const cell = game.cellsRowCol[rowCol];
-        if (cell && cell.status === CELL_STATUS.UNKNOWN) {
-            return testCell(game, rowCol);
-        }
-        return game;
-    }, prev);
-
-
 function testCell (game, rowCol) {
     const cell = game.cellsRowCol[rowCol];
     if (cell.status === CELL_STATUS.OPENED) {
@@ -103,6 +87,21 @@ function testCell (game, rowCol) {
         return nextGame;
     }
 }
+
+const updateCell = (game, rowCol, cell) => ({
+    ...game,
+    cellsRowCol: { ...game.cellsRowCol, [rowCol]: cell },
+});
+
+const testCells = (prev, rowCols) =>
+    rowCols.reduce((game, rowCol) => {
+        const cell = game.cellsRowCol[rowCol];
+        if (cell && cell.status === CELL_STATUS.UNKNOWN) {
+            return testCell(game, rowCol);
+        }
+        return game;
+    }, prev);
+
 
 const adjacentCellsRCs = (numRows,numCols, row, col) =>
     ADJ_CELLS_OFFSETS.reduce((rowCols, [dr, dc]) => {
@@ -144,7 +143,7 @@ const countMines = (game, rowCols) =>
  */
 const create = (rows = DEFAULT_ROWS, cols = DEFAULT_COLS , mineCount = DEFAULT_MINE_COUNT) => ({
     ...createBoard(rows, cols, mineCount),
-    status: GAME_STATUS.START,
+    status: GAME_STATUS.IN_PROGRESS,
     moveCount: 0,
     mineCount: mineCount,
     rows: rows,
@@ -183,8 +182,7 @@ function flag (game , rowCol) {
     return game;
 }
 
-export default {
-    gameStatus: GAME_STATUS,
+export const minesweeper = {
     create : create,
     open: open,
     flag: flag

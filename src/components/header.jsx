@@ -1,6 +1,8 @@
 /**
  * Created by bamorgans on 1/29/2018.
  */
+
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import {GAME_STATES} from '../constants.js';
@@ -11,9 +13,6 @@ export default class Header extends React.Component {
 
         this.changeLevelHandler = this.props.changeLevelHandler;
         this.newGameHandler = this.props.newGameHandler;
-        this.state = {
-            value: 'beginner',
-        };
     }
 
     getStyles() {
@@ -59,7 +58,7 @@ export default class Header extends React.Component {
                 </div>
                 <div style={styles.buttonContainer}>
                     <button id='newGameBtn' className='button' onClick={this.newGameHandler}>
-                        {this.props.gameState === GAME_STATES.END ? 'New Game' : '  Quit  '}</button>
+                        {_.includes([GAME_STATES.END,GAME_STATES.RESET], this.props.gameState) ? 'New Game' : '  Quit  '}</button>
                 </div>
             </div>
         );

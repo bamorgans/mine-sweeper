@@ -8,17 +8,11 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
-    case ACTION_TYPE.NEW_GAME:
-        return {...state, gameState: action.payload};
-
     case ACTION_TYPE.SET_LEVEL:
-        return {...state, level: action.payload, gameState: GAME_STATES.END};
+        return {...state, level: action.payload, gameState: GAME_STATES.RESET, gameData:{}};
 
-    case ACTION_TYPE.ADD_FLAG:
-        return {...state, board: [...state.board, action.payload]};
-
-    case ACTION_TYPE.OPEN_CELL:
-        return {...state, board: [...state.board, action.payload]};
+    case ACTION_TYPE.UPDATE_GAME:
+        return {...state, gameState: action.payload.gameState, gameData:action.payload.gameData};
 
     default:
         return state;

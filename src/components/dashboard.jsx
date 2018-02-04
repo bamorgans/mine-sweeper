@@ -8,7 +8,7 @@ export default class Dashboard extends React.Component {
 
     constructor(props) {
         super(props);
-        this.timerEvent = TIMER_EVENT.END;
+        this.timerEvent = TIMER_EVENT.STOP;
     }
 
     getStyles() {
