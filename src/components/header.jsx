@@ -31,7 +31,7 @@ export default class Header extends React.Component {
             title: {
                 color: '#fff',
                 fontSize: '1.5em',
-                flexGrow: 2
+                flexGrow: 1
             },
 
             levelContainer: {

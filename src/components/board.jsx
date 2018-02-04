@@ -17,9 +17,6 @@ export default class Board extends React.Component {
         this.onClickHandler = this.onClickHandler.bind(this);
     }
 
-    componentWillMount() {
-    }
-
     onClickHandler(e) {
         /* $(e).explode({
              omitLastLine: false,

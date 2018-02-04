@@ -94,7 +94,7 @@ content {
 
 /*cell background colors */
 
-.text-brown {
+.bkgd-brown {
     background:#725b53
 }
 
@@ -127,7 +127,7 @@ content {
 
 
 .text-orange {
-    background: #cb4b16
+    color: #cb4b16
 }
 
 .button {

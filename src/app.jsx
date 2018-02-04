@@ -26,6 +26,9 @@ class App extends React.Component {
         this.setFlagHandler = this.setFlagHandler.bind(this);
         this.openCellHandler = this.openCellHandler.bind(this);
     }
+    componentWillMount() {
+        this.newGame();
+    }
 
     changeLevelHandler(e) {
         if (e.target && e.target.value) {
@@ -34,7 +37,30 @@ class App extends React.Component {
     }
 
     newGameHandler(e) {
-        if (e.target && this.props) {
+        if (e.target ) {
+            this.newGame();
+        }
+    }
+
+    openCellHandler (cellRowCol) {
+        if(cellRowCol && GAME_STATUS.IN_PROGRESS === this.props.gameData.status ) {
+            let gameData = minesweeper.open(this.props.gameData,cellRowCol);
+
+            // checking if the game is over
+            let gameState = GAME_STATUS.IN_PROGRESS !== gameData.status ?
+                GAME_STATES.END : this.props.gameState;
+            store.dispatch(actions.updateGame(gameState, gameData));
+        }
+    }
+    setFlagHandler (cellRowCol) {
+        if(cellRowCol && GAME_STATUS.IN_PROGRESS === this.props.gameData.status) {
+            let gameData = minesweeper.flag(this.props.gameData,cellRowCol);
+            store.dispatch(actions.updateGame(this.props.gameState, gameData));
+        }
+    }
+
+    newGame () {
+        if (this.props) {
             let gameState = GAME_STATES.END;
             let gameData = {};
             if(_.includes([GAME_STATES.END, GAME_STATES.RESET],this.props.gameState)) {
@@ -46,23 +72,6 @@ class App extends React.Component {
         }
     }
 
-    openCellHandler (cellRowCol) {
-        if(cellRowCol && GAME_STATUS.IN_PROGRESS === this.props.gameData.status ) {
-            let gameData = minesweeper.open(this.props.gameData,cellRowCol);
-
-            // checking if the game is over
-            let gameState = GAME_STATUS.IN_PROGRESS !== gameData.status ?
-                GAME_STATES.END : this.props.gameState;
-
-            store.dispatch(actions.updateGame(gameState, gameData));
-        }
-    }
-    setFlagHandler (cellRowCol) {
-        if(cellRowCol && GAME_STATUS.IN_PROGRESS === this.props.gameData.status) {
-            let gameData = minesweeper.flag(this.props.gameData,cellRowCol);
-            store.dispatch(actions.updateGame(this.props.gameState, gameData));
-        }
-    }
     render() {
 
         return <div>
@@ -75,6 +84,7 @@ class App extends React.Component {
             <Dashboard
                 level={this.props.level}
                 gameState={this.props.gameState}
+                gameStatus={this.props.gameData.status}
             />
             <Board
                 level={this.props.level}
