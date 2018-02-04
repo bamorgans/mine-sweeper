@@ -6,8 +6,8 @@ import {GAME_STATUS} from '../api/minesweeper.js';
 
 const UI_STRINGS = {
     INSTRUCTIONS: 'Click + CTRL to add a',
-    WIN: 'WINNER WINNER',
-    LOST:  'You lost'
+    WIN: 'WINNER',
+    LOST:  'loser'
 };
 
 export default class Dashboard extends React.Component {

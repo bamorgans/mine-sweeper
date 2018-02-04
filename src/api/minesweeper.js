@@ -79,7 +79,7 @@ function testCell (game, rowCol) {
         });
 
         if (isWinner(nextGame)) {
-            return { ...nextGame, status: GAME_STATUS.WON };
+            return { ...nextGame, status: GAME_STATUS.WIN };
         } else if (openedCount === 0) {
             return testCells(nextGame, adjCells);
         }
@@ -104,11 +104,11 @@ const testCells = (prev, rowCols) =>
 
 
 const adjacentCellsRCs = (numRows,numCols, row, col) =>
-    ADJ_CELLS_OFFSETS.reduce((rowCols, [dr, dc]) => {
-        const colDelta = col + dc;
-        const rowDelta = row + dr;
-        if (colDelta > -1 && colDelta < numCols && rowDelta > -1 && rowDelta < numRows) {
-            return rowCols.concat([colDelta, rowDelta].toString());
+    ADJ_CELLS_OFFSETS.reduce((rowCols, [rowOffset, colOffset]) => {
+        const colAdj = col + colOffset;
+        const rowAdj = row + rowOffset;
+        if (colAdj > -1 && colAdj < numCols && rowAdj > -1 && rowAdj < numRows) {
+            return rowCols.concat([rowAdj, colAdj].toString());
         }
         return rowCols;
     }, []);
@@ -168,7 +168,7 @@ const open = (game, rowCol) => ({
  * @param rowCol  a string specifying the row and column  which identifies the selected cell
  * @returns the game data object
  */
-function flag (game , rowCol) {
+function flag (game, rowCol) {
     const cell = game.cellsRowCol[rowCol];
     if (cell.status === CELL_STATUS.UNKNOWN) {
         return updateCell(game, rowCol, { ...cell, status: CELL_STATUS.FLAGGED });

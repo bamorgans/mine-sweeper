@@ -31,12 +31,13 @@ export default class Cell extends React.Component {
             'cell-default cell': isIcon ? 'cell' : 'cell ' + colorMap[openCount.toString()];
 
         // removing label for clear cells
+        //todo bam -- used for DEVELOPMENT --remove this.props.isMine check below
         openCount = openCount !== -1 ? openCount : '';
         return (
             <div id={this.props.id} ref={this.props.id} className={cellClass} onClick={this.props.onClick}>
                 {CELL_STATUS.OPENED === cellStatus ?
                     <b>{openCount}</b> :
-                    CELL_STATUS.EXPLODED === cellStatus ?
+                    CELL_STATUS.EXPLODED === cellStatus || this.props.isMine ?
                         <img src={ICONS.MINE}/> : CELL_STATUS.FLAGGED === cellStatus ? <img src={ICONS.FLAG}/> : ''}
             </div>
         );
@@ -48,6 +49,7 @@ Cell.defaultProps = {};
 
 Cell.propTypes = {
     id: PropTypes.string.isRequired,
+    isMine:PropTypes.bool,
     cellData: PropTypes.object,
     onClick: PropTypes.func
 };

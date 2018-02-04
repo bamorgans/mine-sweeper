@@ -34,8 +34,8 @@ export const ICONS = {
 };
 
 export const LEVEL_CONFIG = {
-    beginner:            {rows:  3, cols:  3, mineCount: 1},
-    /*   beginner:       {rows:  9, cols:  9, mineCount: 10},*/
+    /*beginner:            {rows:  3, cols:  3, mineCount: 1},*/
+    beginner:       {rows:  9, cols:  9, mineCount: 10},
     intermediate:   {rows: 16, cols: 16, mineCount: 40},
     expert:         {rows: 24, cols: 24, mineCount: 99}
 };
