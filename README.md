@@ -1,4 +1,4 @@
-#MineSweeper
+## MineSweeper
 This is the classic MineSweeper game. Select one of the levels below and press the 'New Game' button to begin.
 - Beginner:     9 x 9 grid,   10 mines
 - Intermediate: 16 x 16 grid, 40 mines
