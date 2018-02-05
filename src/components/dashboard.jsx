@@ -32,7 +32,7 @@ export default class Dashboard extends React.Component {
                 background: '#484848',
                 fontSize: '1.4em'
             },
-            gameInfo: {
+            boxInfo: {
                 border: ' 2px #268bd2 solid',
                 borderRadius: 5,
                 padding: 3,
@@ -43,12 +43,6 @@ export default class Dashboard extends React.Component {
                 padding: 3,
                 margin: '0 10px',
                 fontSize: '2em'
-            },
-            timerInfo: {
-                border: ' 2px red solid',
-                borderRadius: 5,
-                padding: 3,
-                background: '#fff',
             },
             instructions: {
                 fontSize: '1em'
@@ -83,7 +77,7 @@ export default class Dashboard extends React.Component {
     miniDash(styles) {
         let gameStatus = this.props.gameStatus || -1;
         if(GAME_STATUS.WIN === gameStatus || GAME_STATUS.LOST === gameStatus) {
-            var classes = GAME_STATUS.WIN === gameStatus ? 'text-red' : 'text-yellow';
+            let classes = GAME_STATUS.WIN === gameStatus ? 'text-red' : 'text-yellow';
             return (
                 <div style={styles.miniDash}  className={'flex-row-container ' + classes}>
                     <b><i>{GAME_STATUS.WIN === gameStatus ? UI_STRINGS.WIN : UI_STRINGS.LOST}
@@ -110,7 +104,7 @@ export default class Dashboard extends React.Component {
 
         return (
             <div className='dashboard' style={styles.dashboard}>
-                <div style={styles.gameInfo}>
+                <div style={styles.boxInfo}>
                     <div style={styles.bombIndicator} className='flex-row-container text-blue'>
                         <div style={styles.label}>{gameCfg.mineCount}</div>
                         <img src={ICONS.MINE}/>
@@ -119,7 +113,7 @@ export default class Dashboard extends React.Component {
                 <div >
                     {this.miniDash(styles)}
                 </div>
-                <div style={styles.timerInfo}>
+                <div style={styles.boxInfo}>
                     <div className='text-red'>
                         <Timer timerEvent={this.timerEvent}/>
                     </div>
