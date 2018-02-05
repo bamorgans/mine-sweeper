@@ -38,6 +38,6 @@ Builds the app for development and debugging.<br>
 Run Mocha base unit test.<br>
 
 
-### `npm run lint{:fix}`
+### `npm run lint {:fix}`
 
 Run  ESLint on project files.  add ':fix' to resolve linting issues.<br>
