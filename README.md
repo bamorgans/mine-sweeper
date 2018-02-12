@@ -13,7 +13,7 @@ Controls
 
 ## Technologies
 
-Projects utilized ES6 syntax, JSX, React-Router, Redux, ESLint, Mocha, Grunt
+Project utilizes ES6, JSX, React, Redux, ESLint, Mocha, Grunt
 
 
 ## Available Scripts
