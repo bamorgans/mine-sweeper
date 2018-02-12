@@ -1,14 +1,25 @@
 import assert from 'assert';
 import actions from '../../src/actions.js';
+import {ACTION_TYPE, GAME_LEVEL, GAME_STATES} from "../../src/constants";
 
 describe('Actions Test',() => {
-    describe('CHANGE_LEVEL', () => {
-        it('should create CHANGE_LEVEL action', (done) => {
-            let action = actions.changeLevel(3);
+    describe('create redux actions', () => {
+        it('should create SET_LEVEL action', (done) => {
+            let action = actions.setLevel(GAME_LEVEL.BEGINNER);
             assert.deepEqual(action,
                 {
-                    type: 'CHANGE_LEVEL',
-                    payload: 3
+                    type: 'set level',
+                    payload: 'beginner'
+                });
+
+            done();
+        });
+        it('should create updateGame action', (done) => {
+            let action = actions.updateGame(GAME_STATES.END, {});
+            assert.deepEqual(action,
+                {
+                    type: 'update game',
+                    payload: {gameState: 'end', gameData:{}}
                 });
 
             done();

@@ -1,28 +1,20 @@
-#MineSweeper
+## MineSweeper
+This is the classic MineSweeper game. Select one of the levels below and press the 'New Game' button to begin.
+- Beginner:     9 x 9 grid,   10 mines
+- Intermediate: 16 x 16 grid, 40 mines
+- Expert:       24 x 24 grid, 99 mines
+  
+Uncover all squares that don’t have mines to win.
 
-This is a classic MineSweeper game. The game consists of a 9x9 grid of squares, with 10 “mines” randomly hidden in 10 of the squares. 
-- The user clicks on a squares to uncover them. Each time:
-- If the square contains a mine, the user loses and game is over!
-- If the square is adjacent to a mine, the square displays the total number of mines in the 8 squares around it
-- If the square is neither a mine or adjacent to a mine, the square displays a blank, and should behave as if the 8 adjacent squares were also clicked (recursively applying this algorithm)
-
-The user wins when they uncover all squares that don’t have mines.
-
-
-## Requirements
-Features to cover in your implementation:
-
-- Add mine flagging (i.e. a way for users to indicate where they think the mines are)
-- Add a timer
-- Add some animations (e.g. when uncovering empty regions)
-- Add a way for users to choose a difficulty level (e.g. board size and mine count)
-- Different numbered cells should be represented by a different color (e.g. 1s are red, 2s are purple, etc. see example picture)
-- Do something fun when the user wins or loses, and show the mines!
+Controls
+- clicks on a square to open
+- CTRL + click to place a Flag
 
 
-## Technologies Used
+## Technologies
 
-Projects utilized ES6 syntax, JSX, React-Router, Redux, ESLint, Mocha
+Projects utilized ES6 syntax, JSX, React-Router, Redux, ESLint, Mocha, Grunt
+
 
 ## Available Scripts
 
@@ -38,8 +30,14 @@ You will also see any lint errors in the console.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Builds the app for development and debugging.<br>
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+
+### `npm run test`
+
+Run Mocha base unit test.<br>
+
+
+### `npm run lint {:fix}`
+
+Run  ESLint on project files.  add ':fix' to resolve linting issues.<br>

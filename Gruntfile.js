@@ -3,13 +3,25 @@ module.exports = function (grunt) {
     grunt.config.init({
         pkg: grunt.file.readJSON('package.json'),
         copy: {
-            staticfiles: {
+            cssfiles: {
                 expand: true,
-                flatten: true,
-                src: 'static/*',
-                dest: 'dist/',
+                cwd: 'static/',
+                src: '**/*.css',
+                dest: 'dist',
             },
-            htmlfile : {
+            imgfiles: {
+                expand: true,
+                cwd: 'static/',
+                src: '**/*.*',
+                dest: 'dist',
+            },
+            libfiles: {
+                expand: true,
+                cwd: 'static/',
+                src: '**/*.js',
+                dest: 'dist',
+            },
+            htmlfile: {
                 expand: true,
                 src: 'index.html',
                 dest: 'dist/',

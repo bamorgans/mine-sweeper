@@ -1,5 +1,10 @@
+/**
+ * Created by bamorgans on 1/29/2018.
+ */
+
 import React from 'react';
 import {HashRouter, Switch, Route} from 'react-router-dom';
+
 import App from './app.jsx';
 
 const NotFound = () => (

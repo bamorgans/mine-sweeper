@@ -1,15 +1,26 @@
+var express = require('express');
+var path = require('path');
 module.exports = {
-    devtool: 'eval-source-map',
+    cache: false,
+    context: path.resolve(__dirname, 'src'),
+    devtool: 'inline-source-map',
     entry: [
-        './index.js',
+        '../index.js',
     ],
     output: {
-        path: __dirname + '/dist',
+        path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js',
-        publicPath: '/static/'
+        publicPath: '/'
     },
     plugins: [
     ],
+    devServer: {
+        contentBase: './', //disk location
+        watchContentBase: true,
+        setup(app){
+            app.use('static/', express.static('/static/'));
+        }
+    },
     module: {
         rules: [
             {
@@ -35,7 +46,6 @@ module.exports = {
                 query: {
                 }
             }
-
         ]
     }
 };

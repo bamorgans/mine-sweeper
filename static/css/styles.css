@@ -1,12 +1,152 @@
-body {
+html {
     height: 100%;
+    overflow-x: hidden;
     background: #f3f3f3;
-    font-family: 'Roboto';
 }
 
+body {
+    height: 100%;
+    margin: 0;
+    background: #f3f3f3;
+    font-family: 'Roboto';
+    font-size: 14pt;
+    min-width: 700px;
+}
+
+* {
+    box-sizing: border-box
+}
 
 content {
     margin-left: 130px;
     padding-top: 60px;
     display: flex;
 }
+.flex-row-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+/* board class styles*/
+.board {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+/* .cell styles*/
+.cell {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    margin: 1px;
+    padding: 3px;
+    border: 1px solid #bbb;
+    border-radius: 7px;
+    background: #fff;
+    overflow: hidden;
+    color: #000;
+    font-size: 1.4em;
+    font-weight: 400;
+}
+
+.cell:hover {
+    border: 2px solid #bbb;
+    background: #f3f3f3;
+}
+
+.cell-default {
+    cursor: pointer;
+    border: 1px solid #bbb;
+    background: #c3c3c3;
+}
+
+.cell-selected {
+    cursor: pointer;
+    border: 1px solid #bbb;
+    background: #c3c3c3;
+}
+
+
+/* cell text colors */
+.text-yellow {
+    color: #b58900
+}
+
+.text-blue {
+    color: #268bd2
+}
+
+.text-red {
+    color: #dc322f
+}
+
+
+/*cell background colors */
+
+.bkgd-brown {
+    background:#725b53
+}
+
+.bkgd-blue {
+    background: #268bd2
+}
+
+.bkgd-green {
+    background: #859900
+}
+
+.bkgd-red {
+    background: #dc322f
+}
+
+.bkgd-violet {
+    background: #6c71c4
+}
+.bkgd-magenta {
+    background: #d33682
+}
+
+.bkgd-cyan {
+    background: #2aa198
+}
+
+.bkgd-yellow {
+    background: #b58900
+}
+
+
+.text-orange {
+    color: #cb4b16
+}
+
+.button {
+    padding: 0px 20px;
+    border-radius: 5px;
+    height: 2em;
+    background: #fff;
+    min-width: 120px;
+}
+
+.button:hover {
+    background: #fff;
+
+}
+
+.combobox {
+    padding: 0px 20px;
+    border-radius: 5px;
+    height: 2em;
+    min-width: 120px;
+}
+
