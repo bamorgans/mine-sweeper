@@ -7,7 +7,7 @@ This is the classic MineSweeper game. Select one of the levels below and press t
 Uncover all squares that don’t have mines to win.
 
 Controls
-- clicks on a square to open
+- click on a square to open
 - CTRL + click to place a Flag
 
 
