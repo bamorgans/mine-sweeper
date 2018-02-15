@@ -1,11 +1,13 @@
-var express = require('express');
-var path = require('path');
+const express = require('express');
+const path = require('path');
+const webpack = require('webpack');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+
 module.exports = {
-    cache: false,
     context: path.resolve(__dirname, 'src'),
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     entry: [
-        '../index.js',
+        '../index.js'
     ],
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -13,13 +15,21 @@ module.exports = {
         publicPath: '/'
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
+        new new UglifyJsPlugin({
+            uglifyOptions: {
+                compress: {
+                    warnings: false
+                }
+            }
+        })
     ],
-    devServer: {
-        contentBase: './', //disk location
-        watchContentBase: true,
-        setup(app){
-            app.use('static/', express.static('/static/'));
-        }
+    resolve: {
+        extensions: ['.js','.jsx']
     },
     module: {
         rules: [
@@ -41,10 +51,7 @@ module.exports = {
             {
                 test:[/\.js$/, /\.jsx$/ ],
                 exclude: /node_modules/,
-                loader: 'babel-loader'
-                ,
-                query: {
-                }
+                loader: ['babel-loader'],
             }
         ]
     }

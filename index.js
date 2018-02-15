@@ -12,4 +12,7 @@ ReactDOM.render(
     document.getElementById('app')
 );
 
-
+// included to make hot-reloading work properly... without this code the browser page will not reload
+if (process.env.NODE_ENV !== 'production' && module.hot) {
+    module.hot.accept();
+}
